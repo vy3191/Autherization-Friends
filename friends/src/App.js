@@ -10,10 +10,13 @@ function App() {
     <div className="App">
       <h1>Autherization Friends Application</h1>
       <Router>
-      <nav>
-          <Link to="/">Home</Link>
-          <Link to="/login">Login</Link>
-      </nav>
+      <div className="main-nav">     
+        <nav>
+            <Link to="/">Home</Link>
+            <Link to="/login">Login</Link>
+        </nav>
+      </div>
+
         <div>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} /> 

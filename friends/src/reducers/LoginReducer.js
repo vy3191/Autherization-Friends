@@ -18,16 +18,19 @@ export function reducer(state=initialState, action) {
           ...state,
           isLoading:true
        }
+
     case LOGIN_SUCESS:
       return {
         ...state, 
         isLoading:false, 
 
       }   
-    case LOGIN_ERROR: 
+
+    case LOGIN_ERROR:
      return {
        ...state, 
-       isLoading:false
+       isLoading:false,
+       error: action.payload
      } 
       
         

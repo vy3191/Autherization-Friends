@@ -1,6 +1,9 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
+import  {connect} from 'react-redux';
+import { getLogingDetails } from '../../actions/LoginActions';
 
-function Login() {
+
+function Login(props) {
   const defaultUser = {username:"", password:""};
   const [user,setUser] = useState(defaultUser);
   const handleChange = (event) => {
@@ -8,17 +11,21 @@ function Login() {
   }
   const handleSubmit = (event) => {
      event.preventDefault();
-
+     if(!user.username && !user.password) return;
+     props.getLogingDetails(user);
+     setUser(defaultUser);
   }
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" onChange={handleChange} value={user.username} placeholder="Enter Username" />
-        <input type="text" onChange={handleChange} value={user.password} placeholder="Enter Password" />
+    <div className="form-login">
+      <form onSubmit={handleSubmit} className="wpforms-form">
+        <input type="text" onChange={handleChange} name="username" value={user.username} placeholder="Enter Username" />
+        <input type="text" onChange={handleChange} name="password" value={user.password} placeholder="Enter Password" />
         <button type="submit">Log In</button>
       </form>
     </div>
   )
 }
-
-export default Login
+const mapDispatchToState = {
+  getLogingDetails
+}
+export default connect(null, mapDispatchToState)(Login);

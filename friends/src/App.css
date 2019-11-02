@@ -20,3 +20,25 @@
 .App-link {
   color: #09d3ac;
 }
+
+.main-nav {
+   min-height: 60px;
+   display: flex;
+   flex-direction: row;
+   background-image: linear-gradient(pink, rgba(0,0,0,.7));
+}
+nav {
+  width: 40%;
+  display: flex;
+  margin-left:100px;
+  justify-content: space-around;
+  padding-top:14px;  
+}
+
+a {
+  text-decoration: none;
+}
+
+.form-login {
+  margin-top: 80px;
+}
