@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { userApi } from '../utils/api';
+
 export const FETCHING_FRIENDS_START = "FETCHING_FRIENDS_START";
 export const FETCHING_FRIENDS_SUCCESS = "FETCHING_FRIENDS_SUCCESS";
 export const FETCHING_FRIENDS_ERROR = "FETCHING_FRIENDS_ERROR";
@@ -13,3 +16,18 @@ export const UPDATING_FRIENDS_ERROR = "UPDATING_FRIENDS_ERROR";
 export const DELETING_FRIENDS_START = "DELETING_FRIENDS_START";
 export const DELETING_FRIENDS_SUCCESS = "DELETING_FRIENDS_SUCCESS";
 export const DELETING_FRIENDS_ERROR = "DELETING_FRIENDS_ERROR";
+
+export function getAllFriends() {
+    return (dispatch) => {
+       dispatch({type:FETCHING_FRIENDS_START});
+       userApi().get('/api/friends')
+                .then( response => {
+                   console.log(response);
+                   dispatch({type:FETCHING_FRIENDS_SUCCESS, payload:response.data})
+                })
+                .catch(err=>{
+                  console.log(err);
+                   dispatch({type:FETCHING_FRIENDS_ERROR, payload: err})
+                })
+    }
+}

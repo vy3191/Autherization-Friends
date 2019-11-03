@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { ACCESS_TOKEN } from '../constants/constant';
 import { userApi } from '../utils/api';
+import { ACCESS_TOKEN } from '../constants/constant';
+
 
 
 export const LOGIN_LOADING = "LOGIN_LOADING";

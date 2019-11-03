@@ -5,11 +5,12 @@ import { Provider } from 'react-redux';
 import  thunk  from 'redux-thunk';
 import  logger  from 'redux-logger';
 import { reducer as LoginReducer } from './reducers/LoginReducer';
+import { reducer as FriendsReducer} from './reducers/Friends'
 
 import './index.css';
 import App from './App';
 
-const reducer = combineReducers({login:LoginReducer});
+const reducer = combineReducers({login:LoginReducer, friends: FriendsReducer});
 const store = createStore(reducer, applyMiddleware(thunk,logger));
 
 ReactDOM.render(

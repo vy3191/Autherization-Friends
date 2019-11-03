@@ -45,6 +45,70 @@ export function reducer(state=initialState, action) {
         fetchingFriends:false,
         error:action.payload
       }    
+
+      case SAVING_FRIENDS_START:
+        return {
+          ...state, 
+          savingFriends:true
+        }
+      case SAVING_FRIENDS_SUCCESS:
+         return {
+           ...state, 
+           savingFriends:false,
+           savedFriends:true,
+           friends: [...state.friends,action.payload ]
+         }  
+      case SAVING_FRIENDS_ERROR:
+         return {
+           ...state, 
+           savingFriends:false,
+           savedFriends: false,
+           error: action.payload
+         }  
+
+    case UPDATING_FRIENDS_START:
+         return {
+           ...state,
+           updatingFriends:true           
+         }   
+
+     case UPDATING_FRIENDS_SUCCESS:
+         return {
+            ...state,
+            updatingFriends:false,
+            updatedFriedns:true,
+            friends: [...state.friends]
+         }
+
+     case UPDATING_FRIENDS_ERROR:
+     return {
+         ...state,
+         updatingFriends:false,
+         updatedFriedns:false,
+         error:action.payload
+     }           
+         
+      case DELETING_FRIENDS_START:
+          return {
+            ...state,
+            deletingFriends:true           
+          }   
+      case DELETING_FRIENDS_SUCCESS:
+          return {
+             ...state,
+             deletingFriends:false,
+             deletedFriedns:true,
+             friends: [...state.friends]
+          }
+      case DELETING_FRIENDS_ERROR:
+      return {
+          ...state,
+          deletingFriends:false,
+          deletedFriedns:false,
+          error:action.payload
+      }        
+
+      
       default:
        return state
     }
