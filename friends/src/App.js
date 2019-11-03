@@ -5,10 +5,13 @@ import Friends from './components/Friends';
 import { Link, Route,withRouter } from 'react-router-dom';
 import  ProtectedRoute  from './components/ProtectedRoute';
 import CreateFriendForm from './components/CreateFriendForm';
+import {ACCESS_TOKEN} from './constants/constant';
 import Logout from './components/Logout';
 import './App.css';
 
+
 function App() {
+  const token = JSON.parse(localStorage.getItem(ACCESS_TOKEN));
   return (
     <div className="App">
       <h1>Autherization Friends Application</h1>      
@@ -16,9 +19,9 @@ function App() {
         <nav>
             <Link to="/">Home</Link>
             <Link to="/login">Login</Link>
-            <Link to="/friends">Fridens</Link>
-            <Link to='/add-friend'>Create Friend</Link>
-            <Link to='/logout'>Logout</Link>
+            {token && <Link to="/friends">Friends</Link>}
+            {token && <Link to='/add-friend'>Create Friend</Link>}
+            {token &&  <Link to='/logout'>Logout</Link>}
         </nav>
       </div>
       <div>
