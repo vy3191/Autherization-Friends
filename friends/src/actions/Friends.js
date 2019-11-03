@@ -31,3 +31,18 @@ export function getAllFriends() {
                 })
     }
 }
+
+export function addFriends(newFriend) {
+   return (dispatch) => {
+      dispatch({type:SAVING_FRIENDS_START});
+      userApi().post('/api/friends', newFriend)
+               .then( response => {
+                  console.log('getting post response', response);
+                  dispatch({type:SAVING_FRIENDS_SUCCESS, payload:response.data})
+               })
+               .catch(err=>{
+                 console.log(err);
+                  dispatch({type:SAVING_FRIENDS_ERROR, payload: err})
+               })
+   }
+}

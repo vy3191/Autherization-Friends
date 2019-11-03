@@ -1,14 +1,18 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import {connect} from 'react-redux';
+import {addFriends} from '../actions/Friends';
 
-function CreateFriendForm() {
+function CreateFriendForm(props) {
   const defaultNewUser = { name: '',  age: '', email: '' }
   const [newUser, setNewUser] = useState(defaultNewUser);
   const handleChange = (event) => {
       setNewUser({...newUser, [event.target.name]: event.target.value})
   }
-  const handleSubmit = (event) => {
+  const handleSubmit = (event) => {    
      event.preventDefault();
      if(!newUser.name && !newUser.age && !newUser.email) return;
+    //  console.log('new user', newUser);
+     props.addFriends(newUser);
      setNewUser(defaultNewUser);
   }
   return (
@@ -22,5 +26,7 @@ function CreateFriendForm() {
     </div>
   )
 }
-
-export default CreateFriendForm
+const mapDispatchToProps = {
+  addFriends
+}
+export default connect(null, mapDispatchToProps)(CreateFriendForm);
