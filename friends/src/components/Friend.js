@@ -5,10 +5,10 @@ function Friend(props) {
   return (
     <div>
       <ul>
-        <li>{id}</li>
-        <li>{name}</li>
-        <li>{age}</li>
-        <li>{email}</li>
+        <li> Id:{id}</li>
+        <li> Name: {name}</li>
+        <li> Age: {age}</li>
+        <li> Email: {email}</li>
       </ul>
     </div>
   )
