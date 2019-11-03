@@ -98,7 +98,7 @@ export function reducer(state=initialState, action) {
              ...state,
              deletingFriends:false,
              deletedFriedns:true,
-             friends: [...state.friends]
+             friends: [...action.payload]
           }
       case DELETING_FRIENDS_ERROR:
       return {

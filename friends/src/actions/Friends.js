@@ -46,3 +46,17 @@ export function addFriends(newFriend) {
                })
    }
 }
+
+export function removeFriend(friend) {
+    return (dispatch) => {
+        dispatch({type: DELETING_FRIENDS_START});
+        userApi().delete(`/api/friends/${friend.id}`)
+               .then( response => {
+                  console.log('remove', response);
+                  dispatch({type:DELETING_FRIENDS_SUCCESS, payload: response.data});
+               })
+               .catch( err => {
+                  dispatch({type:DELETING_FRIENDS_ERROR, payload: err});
+               })
+    }
+}
