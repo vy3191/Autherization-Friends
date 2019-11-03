@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux';
 import { getAllFriends } from '../actions/Friends';
 import Friend from './Friend';
+import Load from '../components/Loader';
 function Friends(props) {
   
   useEffect( () => {
@@ -14,9 +15,9 @@ function Friends(props) {
   return (
     <div>
       <h2>My Friends' List</h2>
-      { props.fetchingFriends && <h1>Getting your friends...</h1>}
-      {props.fetchedFriends && props.friends.map( (friend,index) => {
-            return <Friend friend={friend}/>
+      { props.fetchingFriends ? <Load /> :
+      props.fetchedFriends && props.friends.map( (friend,index) => {
+            return <Friend friend={friend} key={index}/>
       })}
     </div>
   )
