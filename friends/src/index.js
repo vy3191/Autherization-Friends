@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore, combineReducers, applyMiddleware} from 'redux';
 import { Provider } from 'react-redux';
 import  thunk  from 'redux-thunk';
@@ -14,7 +15,9 @@ const reducer = combineReducers({login:LoginReducer, friends: FriendsReducer});
 const store = createStore(reducer, applyMiddleware(thunk,logger));
 
 ReactDOM.render(
-<Provider store={store} >  
-  <App />
-</Provider>, document.getElementById('root'));
+<Router>  
+  <Provider store={store} >  
+    <App />
+  </Provider>
+</Router>, document.getElementById('root'));
 

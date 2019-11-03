@@ -10,7 +10,7 @@ export const LOGIN_ERROR = "LOGIN_ERROR";
 
 
 
-export function getLogingDetails(user) {
+export function getLogingDetails(props,user) {
     return (dispatch) => {
          dispatch({type: LOGIN_LOADING});
          userApi().post('/api/login', user)
@@ -18,6 +18,7 @@ export function getLogingDetails(user) {
                  console.log(response);
                  dispatch({type:LOGIN_SUCESS, payload: response.data.payload})
                  localStorage.setItem(ACCESS_TOKEN, JSON.stringify(response.data.payload));
+                 props.history.push("/friends");
               })
               .catch( err => {
                  console.log(err.Error);

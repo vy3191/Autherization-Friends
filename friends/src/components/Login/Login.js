@@ -12,8 +12,9 @@ function Login(props) {
   const handleSubmit = (event) => {
      event.preventDefault();
      if(!user.username && !user.password) return;
-     props.getLogingDetails(user);
+     props.getLogingDetails(props,user);     
      setUser(defaultUser);
+     
   }
   return (
     <div className="form-login">
