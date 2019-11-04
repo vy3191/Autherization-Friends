@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 import { removeFriend } from '../actions/Friends';
 
 function Friend(props) {
@@ -14,11 +15,15 @@ function Friend(props) {
                  color: "red", 
                  cursor:'pointer'}
                  }>X</button>
-        </div>        
-        <li> Id:{id}</li>
-        <li> Name: {name}</li>
-        <li> Age: {age}</li>
-        <li> Email: {email}</li>
+        </div>  
+        <Link to={`/friends/${props.friend.id}`}>      
+          <span>
+          <li> Id:{id}</li>
+          <li> Name: {name}</li>
+          <li> Age: {age}</li>
+          <li> Email: {email}</li>
+          </span>
+        </Link>
       </ul>
     </div>
   )

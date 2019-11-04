@@ -64,6 +64,23 @@ export function addFriends(newFriend) {
    }
 }
 
+export function updateFriend(props,friend) {
+   console.log(friend)
+   return (dispatch) => {
+       dispatch({type: UPDATING_FRIENDS_START});
+       userApi().put(`/api/friends/${friend.id}`, friend)
+              .then( response => {
+                 console.log('updating line now', response);
+                 dispatch({type:UPDATING_FRIENDS_SUCCESS, payload: response.data});
+                 props.history.push("/friends");
+              })
+              .catch( err => {
+                 dispatch({type:UPDATING_FRIENDS_ERROR, payload: err});
+              })
+   }
+}
+
+
 export function removeFriend(friend) {
     return (dispatch) => {
         dispatch({type: DELETING_FRIENDS_START});

@@ -103,8 +103,9 @@ export function reducer(state=initialState, action) {
          return {
             ...state,
             updatingFriends:false,
-            updatedFriedns:true,
-            friends: [...state.friends]
+            updatedFriends:true,
+            friends: [...state.friends, action.payload],
+            friend: {...action.payload}
          }
 
      case UPDATING_FRIENDS_ERROR:

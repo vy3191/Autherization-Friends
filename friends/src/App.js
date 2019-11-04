@@ -18,11 +18,11 @@ function App() {
       <h1>Autherization Friends Application</h1>      
       <div className="main-nav">     
         <nav>
-            <Link to="/">Home</Link>
-            <Link to="/login">Login</Link>
-            {token && <Link to="/friends">Friends</Link>}
-            {token && <Link to='/add-friend'>Create Friend</Link>}
-            {token &&  <Link to='/logout'>Logout</Link>}
+          <Link to="/">Home</Link>
+          <Link to="/login">Login</Link>
+          {token && <Link to="/friends">Friends</Link>}
+          {token && <Link to='/add-friend'>Create Friend</Link>}
+          {token &&  <Link to='/logout'>Logout</Link>}
         </nav>
       </div>
       <div>
