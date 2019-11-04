@@ -8,6 +8,7 @@ import CreateFriendForm from './components/CreateFriendForm';
 import {ACCESS_TOKEN} from './constants/constant';
 import Logout from './components/Logout';
 import './App.css';
+import FriendEdit from './components/FriendEdit';
 
 
 function App() {
@@ -27,9 +28,10 @@ function App() {
       <div>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} /> 
-        <ProtectedRoute path="/friends" component={Friends} />
+        <ProtectedRoute exact path="/friends" component={Friends} />
         <ProtectedRoute path="/add-friend" component={CreateFriendForm} />
         <ProtectedRoute path="/logout" component={Logout} />
+        <ProtectedRoute path="/friends/:id" component={FriendEdit} />
       </div>              
     </div>
   );

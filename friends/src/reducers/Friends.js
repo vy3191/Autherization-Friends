@@ -1,6 +1,9 @@
 import {FETCHING_FRIENDS_START,
         FETCHING_FRIENDS_SUCCESS,
         FETCHING_FRIENDS_ERROR,
+        FETCHING_SINGLE_FRIEND_START,
+        FETCHING_SINGLE_FRIEND_SUCCESS,
+        FETCHING_SINGLE_FRIEND_ERROR,
         SAVING_FRIENDS_START,
         SAVING_FRIENDS_SUCCESS,
         SAVING_FRIENDS_ERROR,
@@ -15,6 +18,8 @@ import {FETCHING_FRIENDS_START,
 const initialState = {
   fetchingFriends:false,
   fetchedFriends:false,
+  fetchingSingleFriend:false,
+  fetchedSingleFriend:false,
   savingFriends:false,
   savedFriends:false,
   updatingFriends:false,
@@ -22,6 +27,7 @@ const initialState = {
   deletingFriends:false,
   deletedFriends:false,
   friends:[],
+  friend:{},
   error: null
 }  
 
@@ -65,6 +71,27 @@ export function reducer(state=initialState, action) {
            savedFriends: false,
            error: action.payload
          }  
+    case FETCHING_SINGLE_FRIEND_START:
+        return {
+          ...state, 
+          fetchingSingleFriend:true,          
+          
+        }
+    case FETCHING_SINGLE_FRIEND_SUCCESS:
+       return {
+         ...state, 
+         fetchingSingleFriend:false,
+         fetchedSingleFriend: true,
+         friend:{...action.payload}
+       } 
+
+    case FETCHING_SINGLE_FRIEND_ERROR:
+       return {
+         ...state, 
+         fetchingSingleFriend:false,
+         fetchedSingleFriend:false,
+         error: action.payload
+       }  
 
     case UPDATING_FRIENDS_START:
          return {

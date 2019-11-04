@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
+import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAllFriends } from '../actions/Friends';
+import { getAllFriends,gettingFriendWithID } from '../actions/Friends';
 import Friend from './Friend';
 import Load from '../components/Loader';
 function Friends(props) {
@@ -9,15 +10,19 @@ function Friends(props) {
      props.getAllFriends();
   },[]);
 
-  console.log('line 11', props.friends)
-  console.log('line12', props.fetchingFriends)
-  console.log('line13', props.fetchedFriends)
+ if(props.friends.length === 0) {
+    return <Load />
+ }
   return (
     <div>
       <h2>My Friends' List</h2>
       { props.fetchingFriends ? <Load /> :
       props.fetchedFriends && props.friends.map( (friend,index) => {
-            return <Friend friend={friend} key={index}/>
+            return <Link to={`/friends/${friend.id}`}>
+                       <div onClick={() =>props.gettingFriendWithID(friend) }>
+                         <Friend friend={friend} key={index}/>
+                       </div>
+                    </Link>
       })}
     </div>
   )
@@ -30,7 +35,8 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-     getAllFriends
+     getAllFriends,
+     gettingFriendWithID
 }
 export default connect(mapStateToProps,
                        mapDispatchToProps)(Friends);
