@@ -14,6 +14,7 @@ function CreateFriendForm(props) {
     //  console.log('new user', newUser);
      props.addFriends(newUser);
      setNewUser(defaultNewUser);
+     props.history.push("/friends");
   }
   return (
     <div>
