@@ -36,7 +36,8 @@ export function reducer(state=initialState, action) {
       case FETCHING_FRIENDS_START:
         return {
           ...state, 
-          fetchingFriends: true
+          fetchingFriends: true,
+          fetchedFriends:false
         }
       case FETCHING_FRIENDS_SUCCESS:
          return {
@@ -49,6 +50,7 @@ export function reducer(state=initialState, action) {
       return {
         ...state,        
         fetchingFriends:false,
+        fetchedFriends:false,
         error:action.payload
       }    
 

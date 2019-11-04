@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {updateFriend} from '../actions/Friends'
 import Load from '../components/Loader';
@@ -25,7 +25,7 @@ function FriendEdit(props) {
   }
   console.log(props.fetchingSingleFriend)
   console.log(props.fetchedSingleFriend)
-  console.log(props.friend)
+  console.log('friend edit- friend',props.friend)
   if(editing) {
      return(
     <form onSubmit={handleSubmit}>

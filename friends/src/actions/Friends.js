@@ -21,6 +21,7 @@ export const DELETING_FRIENDS_SUCCESS = "DELETING_FRIENDS_SUCCESS";
 export const DELETING_FRIENDS_ERROR = "DELETING_FRIENDS_ERROR";
 
 export function gettingFriendWithID(friend) {
+    console.log(friend)
     return (dispatch) => {
         dispatch({type:FETCHING_SINGLE_FRIEND_START});
         userApi().get(`/api/friends/${friend.id}`)
@@ -37,7 +38,7 @@ export function gettingFriendWithID(friend) {
 export function getAllFriends() {
     return (dispatch) => {
        dispatch({type:FETCHING_FRIENDS_START});
-       userApi().get('/api/friends')
+       userApi().get('/api/friends', )
                 .then( response => {
                    console.log(response);
                    dispatch({type:FETCHING_FRIENDS_SUCCESS, payload:response.data})

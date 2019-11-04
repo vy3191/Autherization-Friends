@@ -1,30 +1,24 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getAllFriends,gettingFriendWithID } from '../actions/Friends';
+import { getAllFriends } from '../actions/Friends';
 import Friend from './Friend';
 import Load from '../components/Loader';
 function Friends(props) {
   
   useEffect( () => {
-     props.getAllFriends();
+      props.getAllFriends()
   },[]);
 
- 
-
- if(props.friends.length === 0) {
-    return <Load />
- }
+  console.log('line#14',props.friends);
   return (
-    <div>
+    <React.Fragment>
       <h2>My Friends' List</h2>
       { props.fetchingFriends ? <Load /> :
-      props.fetchedFriends && props.friends.map( (friend,index) => {
-            return  <div onClick={() =>props.gettingFriendWithID(friend) }>
-                         <Friend friend={friend} key={index}/>
-                     </div>
+       props.fetchedFriends && props.friends.map( (friend,index) => {
+            return <Friend friend={friend} key={index}/>              
                     
       })}
-    </div>
+    </React.Fragment>
   )
 }
 function mapStateToProps(state) {
@@ -36,8 +30,7 @@ function mapStateToProps(state) {
     }
 }
 const mapDispatchToProps = {
-     getAllFriends,
-     gettingFriendWithID
+     getAllFriends     
 }
 export default connect(mapStateToProps,
                        mapDispatchToProps)(Friends);

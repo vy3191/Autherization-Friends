@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
-import { removeFriend } from '../actions/Friends';
+import { removeFriend,  gettingFriendWithID} from '../actions/Friends';
 
 function Friend(props) {
   const {id, name, age, email} = props.friend;
@@ -17,7 +17,7 @@ function Friend(props) {
                  }>X</button>
         </div>  
         <Link to={`/friends/${props.friend.id}`}>      
-          <span>
+          <span onClick={() => props.gettingFriendWithID(props.friend)}>
           <li> Id:{id}</li>
           <li> Name: {name}</li>
           <li> Age: {age}</li>
@@ -29,6 +29,7 @@ function Friend(props) {
   )
 }
 const mapDispatchToProps = {
-   removeFriend
+   removeFriend,
+   gettingFriendWithID
 }
 export default connect(null, mapDispatchToProps)(Friend);
