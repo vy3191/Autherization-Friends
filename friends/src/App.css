@@ -1,0 +1,67 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+.main-nav {
+   min-height: 60px;
+   display: flex;
+   flex-direction: row;
+   background-image: linear-gradient(pink, rgba(0,0,0,.7));
+}
+nav {
+  width: 40%;
+  display: flex;
+  margin-left:100px;
+  justify-content: space-around;
+  padding-top:14px;  
+}
+
+a {
+  text-decoration: none;
+}
+
+.form-login {
+  margin-top: 80px;
+}
+
+ul, div.del-button {
+    list-style: none;
+    margin: 20px;
+    padding: 20px 30px;
+    text-align: left;
+    box-shadow: 2px 2px 2px;
+    width: 300px;   
+    background-image: linear-gradient(#15568e, rgba(0,0,0,.45));
+}
+div.del-button {
+   text-align: right;
+}
+
+.update-friend {
+  width: 500px;
+  background: rgba(0,0,0,.7);
+  padding: 30px 50px;
+  color: white;
+  text-align:left;
+  margin: 40px auto;
+
+}
